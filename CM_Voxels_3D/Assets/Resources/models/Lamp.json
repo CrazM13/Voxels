@@ -1,0 +1,139 @@
+{
+	"voxels": [
+		{
+			"canCull": false,
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			},
+			"size": {
+				"x": 0.625,
+				"y": 0.125,
+				"z": 0.625
+			},
+			"textures": {
+				"south": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.125}
+				},
+				"north": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.125}
+				},
+				"up": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.5}
+				},
+				"down": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.5}
+				}, 
+				"east": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.125}
+				},
+				"west": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.125}
+				}
+			}
+		},
+		{
+			"canCull": false,
+			"offset": {
+				"x": 0.0625,
+				"y": 0.125,
+				"z": 0.0625
+			},
+			"size": {
+				"x": 0.5,
+				"y": 0.625,
+				"z": 0.5
+			},
+			"textures": {
+				"south": {
+					"textureID": 14,
+					"offset": {"x": 0, "y": 0.375},
+					"size": {"x": 0.5, "y": 0.625}
+				},
+				"north": {
+					"textureID": 14,
+					"offset": {"x": 0, "y": 0.375},
+					"size": {"x": 0.5, "y": 0.625}
+				},
+				"up": {
+					"textureID": 14,
+					"offset": {"x": 0, "y": 0.375},
+					"size": {"x": 0.5, "y": 0.5}
+				},
+				"down": {
+					"textureID": 14,
+					"offset": {"x": 0, "y": 0.375},
+					"size": {"x": 0.5, "y": 0.5}
+				}, 
+				"east": {
+					"textureID": 14,
+					"offset": {"x": 0, "y": 0.375},
+					"size": {"x": 0.5, "y": 0.625}
+				},
+				"west": {
+					"textureID": 14,
+					"offset": {"x": 0, "y": 0.375},
+					"size": {"x": 0.5, "y": 0.625}
+				}
+			}
+		},
+		{
+			"canCull": false,
+			"offset": {
+				"x": 0,
+				"y": 0.75,
+				"z": 0
+			},
+			"size": {
+				"x": 0.625,
+				"y": 0.125,
+				"z": 0.625
+			},
+			"textures": {
+				"south": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.125}
+				},
+				"north": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.125}
+				},
+				"up": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.5}
+				},
+				"down": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.5}
+				}, 
+				"east": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.125}
+				},
+				"west": {
+					"textureID": 14,
+					"offset": {"x": 0.5, "y": 0},
+					"size": {"x": 0.5, "y": 0.125}
+				}
+			}
+		}
+	]
+}

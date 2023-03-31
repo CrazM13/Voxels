@@ -1,0 +1,202 @@
+{
+	"voxels": [
+		{
+			"canCull": false,
+			"bone": 0,
+			"offset": {
+				"x": -0.05,
+				"y": 0,
+				"z": -0.05
+			},
+			"size": {
+				"x": 0.1,
+				"y": 0.5,
+				"z": 0.1
+			},
+			"textures": {
+				"south": {
+					"textureID": 6,
+					"offset": {"x": 0.4, "y": 0},
+					"size": {"x": 0.1, "y": 0.5}
+				},
+				"north": {
+					"textureID": 6,
+					"offset": {"x": 0.4, "y": 0},
+					"size": {"x": 0.1, "y": 0.5}
+				},
+				"up": {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.1, "y": 0.1}
+				},
+				"down": {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.1, "y": 0.1}
+				},
+				"east": {
+					"textureID": 6,
+					"offset": {"x": 0.4, "y": 0},
+					"size": {"x": 0.1, "y": 0.5}
+				},
+				"west": {
+					"textureID": 6,
+					"offset": {"x": 0.4, "y": 0},
+					"size": {"x": 0.1, "y": 0.5}
+				}
+			}
+		},
+		{
+			"canCull": false,
+			"bone": 0,
+			"offset": {
+				"x": -0.4,
+				"y": 0.5,
+				"z": -0.1
+			},
+			"size": {
+				"x": 0.8,
+				"y": 0.1,
+				"z": 0.2
+			},
+			"textures": {
+				"south":  {
+					"textureID": 6,
+					"offset": {"x": 0.1, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"north":  {
+					"textureID": 6,
+					"offset": {"x": 0.1, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"up":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"down":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"east":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.1, "y": 0.1}
+				},
+				"west":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.1, "y": 0.1}
+				}
+			}
+		},
+		{
+			"canCull": false,
+			"bone": 0,
+			"offset": {
+				"x": -0.3,
+				"y": 0.6,
+				"z": -0.1
+			},
+			"size": {
+				"x": 0.8,
+				"y": 0.1,
+				"z": 0.2
+			},
+			"textures": {
+				"south":  {
+					"textureID": 6,
+					"offset": {"x": 0.1, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"north":  {
+					"textureID": 6,
+					"offset": {"x": 0.1, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"up":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"down":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"east":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.1, "y": 0.1}
+				},
+				"west":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.1, "y": 0.1}
+				}
+			}
+		},
+		{
+			"canCull": false,
+			"bone": 0,
+			"offset": {
+				"x": -0.4,
+				"y": 0.7,
+				"z": -0.1
+			},
+			"size": {
+				"x": 0.8,
+				"y": 0.1,
+				"z": 0.2
+			},
+			"textures": {
+				"south":  {
+					"textureID": 6,
+					"offset": {"x": 0.1, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"north":  {
+					"textureID": 6,
+					"offset": {"x": 0.1, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"up":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"down":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.8, "y": 0.1}
+				},
+				"east":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.1, "y": 0.1}
+				},
+				"west":  {
+					"textureID": 6,
+					"offset": {"x": 0, "y": 0},
+					"size": {"x": 0.1, "y": 0.1}
+				}
+			}
+		}
+	],
+	"bones": [
+		{
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			},
+			"size": {
+				"x": 1,
+				"y": 1,
+				"z": 1
+			}
+		}
+	]
+}

@@ -1,0 +1,37 @@
+{
+	"voxels": [
+		{
+			"canCull": true,
+			"offset": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			},
+			"size": {
+				"x": 1,
+				"y": 1,
+				"z": 1
+			},
+			"textures": {
+				"south": {
+					"textureID": 11
+				},
+				"north": {
+					"textureID": 11
+				},
+				"up": {
+					"textureID": 12
+				},
+				"down": {
+					"textureID": 12
+				}, 
+				"east": {
+					"textureID": 11
+				},
+				"west": {
+					"textureID": 11
+				}
+			}
+		}
+	]
+}
