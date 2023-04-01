@@ -1,3 +1,4 @@
+using CMUI;
 using CMVoxels;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +30,29 @@ public class PlayerEntity : VoxelEntity {
 	private bool isAttacking;
 	private bool isInteracting;
 
+	private bool isInputAllowed = true;
+	public bool AllowInputs {
+		get => isInputAllowed;
+		set {
+
+			if (isInputAllowed && !value) {
+				movementInput = Vector2.zero;
+				mouseInput = Vector2.zero;
+				jumpRequest = false;
+
+				isSprinting = false;
+
+				isAttacking = false;
+				isInteracting = false;
+			}
+
+			isInputAllowed = value;
+		}
+	}
+
 	private void GetInputs() {
+		if (!isInputAllowed) return;
+
 		movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
@@ -39,6 +62,12 @@ public class PlayerEntity : VoxelEntity {
 
 		isAttacking = Input.GetMouseButtonDown(0);
 		isInteracting = Input.GetMouseButtonDown(1);
+
+		// Menu Hotkeys
+		if (Input.GetKeyDown(KeyCode.M)) {
+			MenuManager.OpenMenu("Menu");
+			AllowInputs = false;
+		}
 	}
 	#endregion
 
