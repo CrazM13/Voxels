@@ -51,7 +51,8 @@ public class VoxelSkybox : MonoBehaviour {
 		SkyColour = Color.Lerp(horizonSkyColour, SkyColour, DistanceToHorizon());
 
 		mainCamera.backgroundColor = SkyColour;
-		Shader.SetGlobalFloat("GlobalLightLevel", Mathf.Clamp(1 - skyProgression, 0.05f, 1));
+		Shader.SetGlobalFloat("SkyLightLevel", Mathf.Clamp(1 - skyProgression, 0.05f, 1));
+		//Shader.SetGlobalColor("SkyLightColour", SkyColour);
 	}
 
 	private float DayTimeToSkyProgression() {

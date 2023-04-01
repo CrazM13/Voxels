@@ -14,8 +14,6 @@ public class World : MonoBehaviour {
 	private Chunk[,] chunks;
 	private List<Vector2Int> activeChunks = new List<Vector2Int>();
 
-	private List<Vector2Int> chunksToUnload = new List<Vector2Int>();
-
 	private WorldGenerator worldGenerator;
 
 	private List<Vector2Int> chunksToCreate = new List<Vector2Int>();
@@ -65,6 +63,7 @@ public class World : MonoBehaviour {
 				if (chunk != null) {
 					if (chunk.IsPopulated) {
 						if (!chunk.IsRendererInitialized) chunk.InitializeRenderer();
+						chunk.CalculateLight();
 						chunk.ReloadRenderer();
 					} else {
 						chunksToRerender.Add(chunksToRerender[0]);
@@ -119,7 +118,9 @@ public class World : MonoBehaviour {
 							ScheduleGenerateChunk(targetChunkPosition);
 						} else {
 							if (!chunks[x, z].IsActive) chunks[x, z].IsActive = true;
+							
 							if (!chunks[x, z].IsPopulated) ScheduleGenerateChunk(targetChunkPosition);
+							else ScheduleRerenderChunk(targetChunkPosition);
 						}
 		
 						activeChunks.Add(targetChunkPosition);
@@ -213,7 +214,7 @@ public class World : MonoBehaviour {
 	}
 
 	public VoxelState GetVoxelAt(float x, float y, float z) {
-		return GetVoxelAt((int) x, (int) y, (int) z);
+		return GetVoxelAt(Mathf.RoundToInt(x), Mathf.RoundToInt(y), Mathf.RoundToInt(z));
 	}
 
 	public VoxelState GetVoxelAt(Vector3Int position) {
@@ -229,8 +230,7 @@ public class World : MonoBehaviour {
 		int voxelX = x - (chunk.x * worldGenerator.ChunkWidth);
 		int voxelZ = z - (chunk.y * worldGenerator.ChunkWidth);
 
-		if (chunks[chunk.x, chunk.y] == null) 
-			return VoxelState.EMPTY;
+		if (chunks[chunk.x, chunk.y] == null) return VoxelState.EMPTY;
 		return chunks[chunk.x, chunk.y].GetVoxelAt(new Vector3Int(voxelX, y, voxelZ));
 	}
 

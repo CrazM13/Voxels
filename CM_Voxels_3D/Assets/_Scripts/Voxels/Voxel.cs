@@ -9,8 +9,8 @@ namespace CMVoxels {
 		private string voxelID;
 		private bool isSolid;
 		private bool renderNeighborFaces;
-		private Color transparency;
-		private Color emmision;
+		private VoxelLightColour transparency;
+		private VoxelLightColour emmision;
 
 		private VoxelModel model;
 
@@ -22,8 +22,8 @@ namespace CMVoxels {
 
 			isSolid = false;
 			renderNeighborFaces = false;
-			transparency = Color.clear;
-			emmision = Color.clear;
+			transparency = VoxelLightColour.NONE.Copy();
+			emmision = VoxelLightColour.NONE.Copy();
 		}
 
 		#region Events
@@ -34,13 +34,13 @@ namespace CMVoxels {
 		#region Getters
 		public VoxelModel Model => model;
 
-		public bool IsLightSource() => emmision.maxColorComponent > 0;
+		public bool IsLightSource() => emmision.IsActive;
 
-		public Color GetEmmision() => emmision;
+		public VoxelLightColour GetEmmision() => emmision;
 
-		public float GetTransparency() => transparency.maxColorComponent;
+		public float GetTransparency() => transparency.R;
 
-		public Color GetTint() => transparency;
+		public VoxelLightColour GetTint() => transparency;
 
 		public bool IsSolid() => isSolid;
 
@@ -58,11 +58,11 @@ namespace CMVoxels {
 			renderNeighborFaces = value;
 		}
 
-		public void SetTransparency(Color value) {
+		public void SetTransparency(VoxelLightColour value) {
 			transparency = value;
 		}
 
-		public void SetEmmision(Color value) {
+		public void SetEmmision(VoxelLightColour value) {
 			emmision = value;
 		}
 		#endregion

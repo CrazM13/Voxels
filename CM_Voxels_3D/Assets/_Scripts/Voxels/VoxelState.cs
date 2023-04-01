@@ -30,16 +30,16 @@ namespace CMVoxels {
 			}
 		}
 
-		public Color voxelLighting;
+		public VoxelLightColour voxelLighting;
 
 		public VoxelState() {
 			this.id = Voxels.AIR.GetVoxelID();
-			this.voxelLighting = Color.clear;
+			this.voxelLighting = new VoxelLightColour(0, 0, 0, 1);
 		}
 
 		public VoxelState(string id) {
 			this.id = id;
-			this.voxelLighting = Color.clear;
+			this.voxelLighting = new VoxelLightColour(0, 0, 0, 1);
 		}
 
 		public Voxel GetVoxelType() {

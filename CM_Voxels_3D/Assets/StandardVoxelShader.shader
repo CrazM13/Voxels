@@ -1,4 +1,4 @@
-Shader "Voxel/StandardBlockShader"
+Shader "Voxel/StandardVoxelShader"
 {
     Properties
     {
@@ -41,7 +41,8 @@ Shader "Voxel/StandardBlockShader"
             };
 
             sampler2D _MainTex;
-			float GlobalLightLevel;
+			float SkyLightLevel;
+			float4 SkyLightColour;
 			float MinLightLevel;
 			float MaxLightLevel;
             float4 _MainTex_ST;
@@ -64,13 +65,17 @@ Shader "Voxel/StandardBlockShader"
 				clip(col.a - 1);
 
 				// Lighting
-				float shade = ((MaxLightLevel - MinLightLevel) * GlobalLightLevel) + MinLightLevel;
-				//shade += i.colour.a;
+				float shade = ((MaxLightLevel - MinLightLevel) * (SkyLightLevel)) + MinLightLevel;
+				shade *= i.colour.a;
 				shade = clamp(shade, MinLightLevel, MaxLightLevel);
 
-				float4 minLightTint = float4(i.colour.r * i.colour.a * 0.5, i.colour.g * i.colour.a * 0.5, i.colour.b * i.colour.a * 0.5, 1);
+				//float4 minLightTint = float4(i.colour.r * i.colour.a * 0.5, i.colour.g * i.colour.a * 0.5, i.colour.b * i.colour.a * 0.5, 1);
 
-				col = lerp(minLightTint, col, shade);
+				col = lerp(float4(0, 0, 0, 1), col, shade);
+
+				col.r = min(col.r + (0.5 * MinLightLevel * i.colour.r), MaxLightLevel);
+				col.g = min(col.g + (0.5 * MinLightLevel * i.colour.g), MaxLightLevel);
+				col.b = min(col.b + (0.5 * MinLightLevel * i.colour.b), MaxLightLevel);
 
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);

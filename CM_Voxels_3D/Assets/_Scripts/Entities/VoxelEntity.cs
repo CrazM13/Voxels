@@ -92,9 +92,9 @@ public abstract class VoxelEntity : MonoBehaviour {
 		if (xSpeed > 0) {
 			if (
 				world.GetVoxelAt(transform.position.x + hitboxSize.x + xSpeed, transform.position.y + hitboxSize.y, transform.position.z - hitboxSize.x).GetVoxelType().IsSolid() ||
-				world.GetVoxelAt(transform.position.x + hitboxSize.x + xSpeed, transform.position.y, transform.position.z - hitboxSize.x).GetVoxelType().IsSolid() ||
+				world.GetVoxelAt(transform.position.x + hitboxSize.x + xSpeed, transform.position.y               , transform.position.z - hitboxSize.x).GetVoxelType().IsSolid() ||
 				world.GetVoxelAt(transform.position.x + hitboxSize.x + xSpeed, transform.position.y + hitboxSize.y, transform.position.z + hitboxSize.x).GetVoxelType().IsSolid() ||
-				world.GetVoxelAt(transform.position.x + hitboxSize.x + xSpeed, transform.position.y, transform.position.z + hitboxSize.x).GetVoxelType().IsSolid()
+				world.GetVoxelAt(transform.position.x + hitboxSize.x + xSpeed, transform.position.y               , transform.position.z + hitboxSize.x).GetVoxelType().IsSolid()
 				) {
 				return true;
 			} else {
@@ -102,9 +102,9 @@ public abstract class VoxelEntity : MonoBehaviour {
 			}
 		} else {
 			if (
-				world.GetVoxelAt(transform.position.x - hitboxSize.x + xSpeed, transform.position.y, transform.position.z - hitboxSize.x).GetVoxelType().IsSolid() ||
+				world.GetVoxelAt(transform.position.x - hitboxSize.x + xSpeed, transform.position.y               , transform.position.z - hitboxSize.x).GetVoxelType().IsSolid() ||
 				world.GetVoxelAt(transform.position.x - hitboxSize.x + xSpeed, transform.position.y + hitboxSize.y, transform.position.z - hitboxSize.x).GetVoxelType().IsSolid() ||
-				world.GetVoxelAt(transform.position.x - hitboxSize.x + xSpeed, transform.position.y, transform.position.z + hitboxSize.x).GetVoxelType().IsSolid() ||
+				world.GetVoxelAt(transform.position.x - hitboxSize.x + xSpeed, transform.position.y               , transform.position.z + hitboxSize.x).GetVoxelType().IsSolid() ||
 				world.GetVoxelAt(transform.position.x - hitboxSize.x + xSpeed, transform.position.y + hitboxSize.y, transform.position.z + hitboxSize.x).GetVoxelType().IsSolid()
 				) {
 				return true;
@@ -115,7 +115,7 @@ public abstract class VoxelEntity : MonoBehaviour {
 	}
 
 	private bool IsCollidingWithZ() {
-		if (velocity.x == 0) return false;
+		if (velocity.z == 0) return false;
 
 		float zSpeed = velocity.z;
 

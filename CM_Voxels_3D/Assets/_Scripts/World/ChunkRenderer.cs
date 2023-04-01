@@ -27,7 +27,7 @@ public class ChunkRenderer {
 	}
 
 	private void CreateMeshData() {
-		for (int y = 0; y < ChunkData.ChunkHeight; y++) {
+		for (int y = ChunkData.ChunkHeight - 1; y >= 0; y--) {
 			for (int x = 0; x < ChunkData.ChunkWidth; x++) {
 				for (int z = 0; z < ChunkData.ChunkWidth; z++) {
 
@@ -89,7 +89,7 @@ public class ChunkRenderer {
 				neighbor = ChunkData.World.GetVoxelAt(neighborWorldPosition);
 			}
 
-			renderer.Colours.Add(neighbor.voxelLighting);
+			renderer.Colours.Add(neighbor.voxelLighting.ToColour());
 
 			renderer.Vertices.Add(newVertex);
 		}

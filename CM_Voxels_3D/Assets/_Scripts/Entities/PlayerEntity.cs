@@ -37,8 +37,8 @@ public class PlayerEntity : VoxelEntity {
 
 		if (isGrounded && Input.GetButtonDown("Jump")) jumpRequest = true;
 
-		isAttacking = Input.GetMouseButton(0);
-		isInteracting = Input.GetMouseButton(1);
+		isAttacking = Input.GetMouseButtonDown(0);
+		isInteracting = Input.GetMouseButtonDown(1);
 	}
 	#endregion
 

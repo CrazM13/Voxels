@@ -106,22 +106,26 @@ public class Chunk {
 	}
 
 	public void ReloadRenderer() {
-		//CalculateLight();
-
 		if (renderer != null) renderer.ReRenderChunk();
 	}
 
-	private void CalculateLight() {
-		// Sky Pass
+	public void CalculateLight() {
+		// Emmision Pass
 		for (int x = 0; x < ChunkWidth; x++) {
 			for (int z = 0; z < ChunkWidth; z++) {
-				float skyLight = 1f;
+				float skyLight = 1f; // Skylight from skybox
 
 				for (int y = ChunkHeight - 1; y >= 0; y--) {
 					VoxelState currentVoxel = voxelMap[x, y, z];
 					skyLight *= currentVoxel.GetVoxelType().GetTransparency();
 					
-					currentVoxel.voxelLighting.a = skyLight;
+					// Apply light from light source
+					if (currentVoxel.GetVoxelType().IsLightSource()) {
+						VoxelLightColour emmision = currentVoxel.GetVoxelType().GetEmmision();
+						currentVoxel.voxelLighting.Increase(emmision.R, emmision.G, emmision.B);
+					}
+
+					currentVoxel.voxelLighting.SkyInfluence = skyLight;
 				}
 
 			}
@@ -129,45 +133,45 @@ public class Chunk {
 
 		// Diffuse Pass
 		// Top level loop is number of passes. More passes = better lighting
-		//for (int _ = 0; _ < VoxelLightingData.LightPasses; _++) {
-		//	for (int x = 0; x < ChunkWidth; x++) {
-		//		for (int z = 0; z < ChunkWidth; z++) {
-		//
-		//			for (int y = ChunkHeight - 1; y >= 0; y--) {
-		//				VoxelState currentVoxel = voxelMap[x, y, z];
-		//
-		//				float transparency = currentVoxel.GetVoxelType().GetTransparency();
-		//				if (transparency != 0) {
-		//
-		//					float r;
-		//					float g;
-		//					float b;
-		//					float a;
-		//
-		//					Color right = GetDiffuseLight(new Vector3Int(x + 1, y, z));
-		//					Color forward = GetDiffuseLight(new Vector3Int(x, y, z + 1));
-		//					Color left = GetDiffuseLight(new Vector3Int(x - 1, y, z));
-		//					Color back = GetDiffuseLight(new Vector3Int(x, y, z - 1));
-		//					Color up = GetDiffuseLight(new Vector3Int(x, y + 1, z));
-		//					Color down = GetDiffuseLight(new Vector3Int(x, y - 1, z));
-		//
-		//					r = (right.r + left.r + forward.r + back.r + up.r + down.r + currentVoxel.voxelLighting.r) / 7f;
-		//					g = (right.g + left.g + forward.g + back.g + up.g + down.g + currentVoxel.voxelLighting.g) / 7f;
-		//					b = (right.b + left.b + forward.b + back.b + up.b + down.b + currentVoxel.voxelLighting.b) / 7f;
-		//					a = Mathf.Max(right.a, left.a, forward.a, back.a, up.a, down.a, currentVoxel.voxelLighting.a);
-		//
-		//					Color newLighting = new Color(r, g, b, a);
-		//
-		//					currentVoxel.voxelLighting = newLighting;
-		//				}
-		//			}
-		//
-		//		}
-		//	}
-		//}
+		for (int _ = 0; _ < VoxelLightingData.LightPasses; _++) {
+			for (int x = 0; x < ChunkWidth; x++) {
+				for (int z = 0; z < ChunkWidth; z++) {
+		
+					for (int y = ChunkHeight - 1; y >= 0; y--) {
+						VoxelState currentVoxel = voxelMap[x, y, z];
+		
+						float transparency = currentVoxel.GetVoxelType().GetTransparency();
+						if (transparency != 0) {
+		
+							float r;
+							float g;
+							float b;
+							float sky;
+		
+							VoxelLightColour right = GetDiffuseLight(new Vector3Int(x + 1, y, z));
+							VoxelLightColour forward = GetDiffuseLight(new Vector3Int(x, y, z + 1));
+							VoxelLightColour left = GetDiffuseLight(new Vector3Int(x - 1, y, z));
+							VoxelLightColour back = GetDiffuseLight(new Vector3Int(x, y, z - 1));
+							VoxelLightColour up = GetDiffuseLight(new Vector3Int(x, y + 1, z));
+							VoxelLightColour down = GetDiffuseLight(new Vector3Int(x, y - 1, z));
+		
+							r = Mathf.Max(right.R, left.R, forward.R, back.R, up.R, down.R, currentVoxel.voxelLighting.R);
+							g = Mathf.Max(right.G, left.G, forward.G, back.G, up.G, down.G, currentVoxel.voxelLighting.G);
+							b = Mathf.Max(right.B, left.B, forward.B, back.B, up.B, down.B, currentVoxel.voxelLighting.B);
+							sky = Mathf.Max(right.SkyInfluence, left.SkyInfluence, forward.SkyInfluence, back.SkyInfluence, up.SkyInfluence, down.SkyInfluence, currentVoxel.voxelLighting.SkyInfluence);
+		
+							VoxelLightColour newLighting = new VoxelLightColour(r, g, b, sky);
+		
+							currentVoxel.voxelLighting = newLighting;
+						}
+					}
+		
+				}
+			}
+		}
 	}
 
-	private Color GetDiffuseLight(Vector3Int position) {
+	private VoxelLightColour GetDiffuseLight(Vector3Int position) {
 		VoxelState neighbor;
 		Vector3Int neighborPosition = position;
 	
@@ -176,19 +180,10 @@ public class Chunk {
 			Vector3Int neighborWorldPosition = LocalToWorld(neighborPosition);
 			neighbor = World.GetVoxelAt(neighborWorldPosition);
 		}
-	
-		Color diffusedLight = neighbor.voxelLighting;
-	
-		// Give off light
-		Color emmision = neighbor.GetVoxelType().GetEmmision();
-		if (emmision.a > 0) {
-			float alpha = diffusedLight.a;
-			diffusedLight = emmision;//Color.Lerp(diffusedLight, emmision, emmision.a);
-			alpha = Mathf.Max(alpha, emmision.a);
-			diffusedLight.a = alpha;
-		}
-	
-		//diffusedLight.a -= VoxelLightingData.LightFalloff;
+
+		VoxelLightColour diffusedLight = neighbor.voxelLighting.Copy();
+
+		diffusedLight.ApplyDiffusion();
 		return diffusedLight;
 	}
 

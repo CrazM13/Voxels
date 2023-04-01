@@ -30,12 +30,12 @@ namespace CMVoxels.Builders {
 		}
 
 		public VoxelBuilder SetTransparency(float r, float g, float b) {
-			voxel.SetTransparency(new Color(r, g, b));
+			voxel.SetTransparency(new VoxelLightColour(r, g, b));
 			return this;
 		}
 
 		public VoxelBuilder SetEmmision(float r, float g, float b) {
-			voxel.SetEmmision(new Color(r, g, b));
+			voxel.SetEmmision(new VoxelLightColour(r, g, b));
 			return this;
 		}
 
