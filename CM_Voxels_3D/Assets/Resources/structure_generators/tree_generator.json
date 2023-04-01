@@ -1,0 +1,17 @@
+{
+	"generation": {
+		
+		"spacing": 15,
+		"randomness":  10,
+		"allowedBiomes": [
+			"forest",
+			"cold_forest"
+		]
+		
+	},
+	"structures": [
+		"forest_tree",
+		"small_tree"
+	]
+	
+}

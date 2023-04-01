@@ -1,0 +1,14 @@
+{
+	"voxels": [
+	
+		{
+			"offset": {"x": 0, "y": 0, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 1, "z": 0},
+			"voxelID": "leaf"
+		}
+	
+	]
+}

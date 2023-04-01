@@ -1,0 +1,25 @@
+{
+
+	"chunkWidth": 8,
+	"chunkHeight": 24,
+	
+	"worldSizeInChunks": 100,
+	
+	"viewDistanceInChunks": 10,
+	
+	"biomes": [
+		"grassland",
+		"forest",
+		"cold_forest",
+		"snow",
+		"desert"
+	],
+	
+	"structureGenerators": [
+		"tree_generator",
+		"cactus_generator",
+		"lamp_generator"
+	]
+	
+
+}

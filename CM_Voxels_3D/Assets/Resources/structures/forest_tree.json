@@ -1,0 +1,519 @@
+{
+	"voxels": [
+		{
+			"offset": {"x": -2, "y": -3, "z": 1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -2, "y": -3, "z": 2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": -2, "z": 1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": -2, "z": 2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -2, "y": -2, "z": 1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 2, "y": -2, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 3, "y": -2, "z": 3},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": -1, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": -1, "z": 1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": -1, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": -1, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 2, "y": -1, "z": 1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 2, "y": -1, "z": 2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": -1, "z": 2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": -1, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": -1, "z": -2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 2, "y": -1, "z": -2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 0, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 0, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": 0, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 0, "z": 1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 0, "z": 1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 0, "z": 2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 0, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 1, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 1, "z": 1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": 1, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 1, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 1, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 2, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 2, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 2, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 3, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 3, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 3, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 3, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 4, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 4, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 4, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": 4, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 4, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 5, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 5, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 5, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": 5, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": 5, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -2, "y": 5, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 5, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": 6, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": 6, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 6, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": 6, "z": -2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 6, "z": -4},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -3, "y": 6, "z": -1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 6, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 7, "z": 1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -1, "y": 7, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -4, "y": 7, "z": -2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -5, "y": 7, "z": -2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 3, "y": 7, "z": -3},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 2, "y": 7, "z": -3},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 7, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 8, "z": 1},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 4, "y": 8, "z": -4},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": -6, "y": 8, "z": -3},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 8, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 1, "y": 9, "z": 2},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 2, "y": 9, "z": 3},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 3, "y": 10, "z": 4},
+			"voxelID": "log"
+		},
+		
+		
+		{
+			"offset": {"x": 1, "y": 5, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 5, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -2, "y": 6, "z": -1},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -3, "y": 6, "z": -2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -4, "y": 6, "z": -1},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -4, "y": 6, "z": -2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -5, "y": 6, "z": -2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 3, "y": 6, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 2, "y": 6, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 1, "y": 6, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 6, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 6, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 1, "y": 6, "z": -5},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 2, "y": 6, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 4, "y": 7, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 3, "y": 7, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 4, "y": 7, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 3, "y": 7, "z": -2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 2, "y": 7, "z": -2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -1, "y": 7, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 1, "y": 7, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -6, "y": 7, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -5, "y": 7, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -4, "y": 7, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -3, "y": 7, "z": -2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -3, "y": 7, "z": -1},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -4, "y": 7, "z": -1},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -5, "y": 7, "z": -1},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -6, "y": 7, "z": -2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 5, "y": 8, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 4, "y": 8, "z": -5},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 4, "y": 8, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 3, "y": 8, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 2, "y": 8, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 2, "y": 8, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 3, "y": 8, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -6, "y": 8, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -7, "y": 8, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -6, "y": 8, "z": -2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -5, "y": 8, "z": -2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -4, "y": 8, "z": -2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -5, "y": 8, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 1, "y": 8, "z": 2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 2, "y": 8, "z": 3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 4, "y": 9, "z": -4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": -6, "y": 9, "z": -3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 3, "y": 9, "z": 4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 2, "y": 9, "z": 4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 1, "y": 9, "z": 3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 9, "z": 2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 2, "y": 9, "z": 2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 3, "y": 9, "z": 3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 1, "y": 10, "z": 2},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 2, "y": 10, "z": 3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 2, "y": 10, "z": 4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 3, "y": 10, "z": 3},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 4, "y": 10, "z": 4},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 3, "y": 10, "z": 5},
+			"voxelID": "apple_leaf"
+		},
+		{
+			"offset": {"x": 3, "y": 11, "z": 4},
+			"voxelID": "apple_leaf"
+		}
+	
+	]
+}

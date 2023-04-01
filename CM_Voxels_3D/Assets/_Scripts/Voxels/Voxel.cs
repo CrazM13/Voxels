@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Voxels.VoxelModels;
+using CMVoxels.VoxelModels;
 
-namespace Voxels {
+namespace CMVoxels {
 	public class Voxel {
 
 		private string voxelID;
@@ -18,7 +18,7 @@ namespace Voxels {
 
 		public Voxel(string voxelID, string modelID) {
 			this.voxelID = voxelID;
-			this.model = DataManager.VoxelModelManager.LoadResource(modelID);
+			this.model = DataManager.Models.LoadResource(modelID);
 
 			isSolid = false;
 			renderNeighborFaces = false;
@@ -27,8 +27,8 @@ namespace Voxels {
 		}
 
 		#region Events
-		//public virtual void OnRandomTick(World world, Vector3Int position) { /*MT*/ }
-		//public virtual void OnInteract(World world, Vector3Int position, VoxelEntity source) { /*MT*/ }
+		public virtual void OnRandomTick(World world, Vector3Int position) { /*MT*/ }
+		public virtual void OnInteract(World world, Vector3Int position, VoxelEntity source) { /*MT*/ }
 		#endregion
 
 		#region Getters

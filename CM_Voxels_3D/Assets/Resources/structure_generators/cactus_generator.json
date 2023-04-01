@@ -1,0 +1,16 @@
+{
+	"generation": {
+		
+		"spacing": 15,
+		"randomness":  5,
+		"allowedBiomes": [
+			"desert"
+		]
+		
+	},
+	"structures": [
+		"small_cactus",
+		"large_cactus"
+	]
+	
+}

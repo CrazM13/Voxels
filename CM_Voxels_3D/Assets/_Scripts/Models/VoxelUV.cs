@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Voxels.VoxelModels {
+namespace CMVoxels.VoxelModels {
 
 	public class VoxelUV {
 

@@ -1,0 +1,36 @@
+{
+    "layers": [
+        {
+            "size": 1,
+            "voxels": [
+                {
+                    "voxelID": "grass"
+                }
+            ]
+        },
+        {
+            "size": 1,
+            "voxels": [
+                {
+                    "voxelID": "dirt"
+                }
+            ]
+        },
+        {
+            "voxels": [
+                {
+                    "voxelID": "rock"
+                }
+            ]
+        }
+    ],
+	
+    "rainfall": 0.3,
+    "temperature": 0.5,
+	
+    "terrainSettings": {
+        "height": 0.05,
+        "hillSize": 0.45,
+        "smoothness": 5
+    }
+}

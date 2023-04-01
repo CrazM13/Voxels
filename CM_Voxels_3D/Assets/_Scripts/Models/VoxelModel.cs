@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Voxels.VoxelModels.Animation;
+using CMVoxels.VoxelModels.Animation;
 
-namespace Voxels.VoxelModels {
+namespace CMVoxels.VoxelModels {
 	public class VoxelModel {
 
 		private VoxelMesh mesh;

@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Voxels.VoxelModels.Serialization;
+using CMVoxels.VoxelModels.Serialization;
 
-namespace Voxels.VoxelModels.Animation {
+namespace CMVoxels.VoxelModels.Animation {
 	public class VoxelArmature {
 
 		private VoxelBoneTransform root;

@@ -1,0 +1,28 @@
+{
+    "layers": [
+        {
+            "size": 2,
+            "voxels": [
+                {
+                    "voxelID":  "snow"
+                }
+            ]
+        },
+        {
+            "voxels": [
+                {
+                    "voxelID": "rock"
+                }
+            ]
+        }
+    ],
+	
+    "rainfall": 0.5,
+    "temperature": 0.1,
+	
+    "terrainSettings": {
+        "height": 0.05,
+        "hillSize": 0.5,
+        "smoothness": 5
+    }
+}

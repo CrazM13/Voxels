@@ -1,0 +1,15 @@
+{
+	"generation": {
+		
+		"spacing": 15,
+		"randomness":  10,
+		"allowedBiomes": [
+			"grassland"
+		]
+		
+	},
+	"structures": [
+		"lamp"
+	]
+	
+}

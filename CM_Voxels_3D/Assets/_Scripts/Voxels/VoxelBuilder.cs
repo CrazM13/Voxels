@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Voxels.Builders {
+namespace CMVoxels.Builders {
 	public class VoxelBuilder {
 
 		private Voxel voxel;
@@ -19,7 +19,7 @@ namespace Voxels.Builders {
 
 		public Voxel BuildAndRegister() {
 
-			DataManager.VoxelManager.RegisterVoxel(voxel);
+			DataManager.VoxelTypes.RegisterVoxel(voxel);
 
 			return voxel;
 		}

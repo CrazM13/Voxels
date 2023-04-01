@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Voxels {
+namespace CMVoxels {
 	public class VoxelProducer : Voxel {
 
 		private Voxel produce;
@@ -15,24 +15,24 @@ namespace Voxels {
 			this.produceOffset = produceOffset;
 		}
 
-		//public override void OnRandomTick(World world, Vector3Int position) {
-		//	if (produce == null) return;
-		//
-		//	if (Random.value < produceChance) {
-		//		Vector3Int producePosition = position + produceOffset;
-		//		if (world.GetVoxel(producePosition) == VoxelTypes.AIR.GetVoxelID()) {
-		//			world.SetVoxel(producePosition, produce);
-		//		}
-		//	}
-		//
-		//}
+		public override void OnRandomTick(World world, Vector3Int position) {
+			if (produce == null) return;
+		
+			if (Random.value < produceChance) {
+				Vector3Int producePosition = position + produceOffset;
+				if (world.GetVoxelAt(producePosition).ID == Voxels.AIR.GetVoxelID()) {
+					world.SetVoxel(producePosition, produce);
+				}
+			}
+		
+		}
 
-		//public override void OnInteract(World world, Vector3Int position, VoxelEntity source) {
-		//	Vector3Int producePosition = position + produceOffset;
-		//	if (world.GetVoxel(producePosition) == VoxelTypes.AIR.GetVoxelID()) {
-		//		world.SetVoxel(producePosition, produce);
-		//	}
-		//}
+		public override void OnInteract(World world, Vector3Int position, VoxelEntity source) {
+			Vector3Int producePosition = position + produceOffset;
+			if (world.GetVoxelAt(producePosition).ID == Voxels.AIR.GetVoxelID()) {
+				world.SetVoxel(producePosition, produce);
+			}
+		}
 
 	}
 }

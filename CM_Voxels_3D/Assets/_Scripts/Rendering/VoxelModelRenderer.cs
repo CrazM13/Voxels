@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Voxels.VoxelModels;
-using Voxels.VoxelModels.Animation;
+using CMVoxels.VoxelModels;
+using CMVoxels.VoxelModels.Animation;
 
-namespace Voxels.Rendering {
+namespace CMVoxels.Rendering {
 	public class VoxelModelRenderer {
 
 		private MeshRenderer meshRenderer;
 		private MeshFilter meshFilter;
-
+		private Mesh mesh;
 		public int VertexIndex { get; set; } = 0;
 		public List<Vector3> Vertices { get; private set; } = new List<Vector3>();
 		public List<int> Triangles { get; private set; } = new List<int>();
@@ -21,6 +21,7 @@ namespace Voxels.Rendering {
 			meshFilter = voxelObject.AddComponent<MeshFilter>();
 
 			this.meshRenderer.material = voxelMaterial;
+			mesh = new Mesh();
 		}
 
 		public void Render(VoxelModel model, VoxelBoneTransform transform, VoxelArmature armature = null, VoxelMesh.VoxelMeshCulling culling = null) {
@@ -70,12 +71,13 @@ namespace Voxels.Rendering {
 		}
 
 		public void CreateMesh() {
-			Mesh mesh = new Mesh {
-				vertices = Vertices.ToArray(),
-				triangles = Triangles.ToArray(),
-				uv = UVs.ToArray(),
-				colors = Colours.ToArray()
-			};
+			mesh.Clear();
+
+			mesh.vertices = Vertices.ToArray();
+			mesh.triangles = Triangles.ToArray();
+			mesh.uv = UVs.ToArray();
+			mesh.colors = Colours.ToArray();
+
 
 			mesh.RecalculateNormals();
 

@@ -1,0 +1,28 @@
+{
+    "layers": [
+        {
+            "size": 2,
+            "voxels": [
+                {
+                    "voxelID": "sand"
+                }
+            ]
+        },
+        {
+            "voxels": [
+                {
+                    "voxelID": "rock"
+                }
+            ]
+        }
+    ],
+	
+    "rainfall": 0.1,
+    "temperature": 0.9,
+	
+    "terrainSettings": {
+        "height": 0.05,
+        "hillSize": 0.5,
+        "smoothness": 20
+    }
+}

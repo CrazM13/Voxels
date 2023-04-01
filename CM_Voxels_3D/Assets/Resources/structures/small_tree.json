@@ -1,0 +1,93 @@
+{
+	"voxels": [
+		{
+			"offset": {"x": 0, "y": 0, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 1, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 2, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 3, "z": 0},
+			"voxelID": "log"
+		},
+		
+		{
+			"offset": {"x": 0, "y": 4, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 5, "z": 0},
+			"voxelID": "log"
+		},
+		{
+			"offset": {"x": 0, "y": 6, "z": 0},
+			"voxelID": "log"
+		},
+		
+		
+		{
+			"offset": {"x": 0, "y": 7, "z": 0},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 8, "z": 0},
+			"voxelID": "leaf"
+		},
+		
+		{
+			"offset": {"x": 1, "y": 4, "z": 0},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": 1, "y": 5, "z": 0},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": 1, "y": 6, "z": 0},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": -1, "y": 4, "z": 0},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": -1, "y": 5, "z": 0},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": -1, "y": 6, "z": 0},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 4, "z": 1},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 5, "z": 1},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 6, "z": 1},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 4, "z": -1},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 5, "z": -1},
+			"voxelID": "leaf"
+		},
+		{
+			"offset": {"x": 0, "y": 6, "z": -1},
+			"voxelID": "leaf"
+		}
+	
+	]
+}

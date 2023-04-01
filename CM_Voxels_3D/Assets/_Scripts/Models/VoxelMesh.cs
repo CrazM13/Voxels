@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Voxels.VoxelModels.Serialization;
+using CMVoxels.VoxelModels.Serialization;
 
-namespace Voxels.VoxelModels {
+namespace CMVoxels.VoxelModels {
 	public class VoxelMesh {
 
 		#region Read Only

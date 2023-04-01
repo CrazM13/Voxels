@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Voxels.VoxelModels {
+namespace CMVoxels.VoxelModels {
 	public class VoxelModelManager {
 
 		private Dictionary<string, VoxelModel> cachedModels = new Dictionary<string, VoxelModel>();
@@ -17,10 +17,11 @@ namespace Voxels.VoxelModels {
 			if (cachedModels.ContainsKey(name)) return cachedModels[name];
 
 			// Get the models folder in Resources
-			string path = @$"\models\{name}.json";
+			string path = @$"models\{name}";
 
 			// Load the model
 			TextAsset jsonModel = Resources.Load<TextAsset>(path);
+			if (!jsonModel) Debug.LogWarning($"[Voxel Model Load Resource] Model {name} at {path} not found");
 			VoxelModel loadedModel = Load(jsonModel);
 
 			// Unload the resources file. Not sure if this is needed or if it unloads out of scope

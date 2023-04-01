@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Voxels.VoxelModels.Serialization {
+namespace CMVoxels.VoxelModels.Serialization {
 	[System.Serializable]
 	public class VoxelModelData {
 		[System.Serializable]

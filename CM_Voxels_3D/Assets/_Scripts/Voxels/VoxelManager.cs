@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Voxels {
+namespace CMVoxels {
 	public class VoxelManager {
 
 		private Dictionary<string, Voxel> voxels = new Dictionary<string, Voxel>();
