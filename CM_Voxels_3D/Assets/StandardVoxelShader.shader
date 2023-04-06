@@ -73,9 +73,13 @@ Shader "Voxel/StandardVoxelShader"
 
 				col = lerp(float4(0, 0, 0, 1), col, shade);
 
-				col.r = min(col.r + (0.5 * MinLightLevel * i.colour.r), MaxLightLevel);
-				col.g = min(col.g + (0.5 * MinLightLevel * i.colour.g), MaxLightLevel);
-				col.b = min(col.b + (0.5 * MinLightLevel * i.colour.b), MaxLightLevel);
+				float illuminationR = i.colour.r + (SkyLightColour.r * shade) / (1 + shade);
+				float illuminationG = i.colour.g + (SkyLightColour.g * shade) / (1 + shade);
+				float illuminationB = i.colour.b + (SkyLightColour.b * shade) / (1 + shade);
+
+				col.r = min(col.r + (0.5 * MinLightLevel * illuminationR), MaxLightLevel);
+				col.g = min(col.g + (0.5 * MinLightLevel * illuminationG), MaxLightLevel);
+				col.b = min(col.b + (0.5 * MinLightLevel * illuminationB), MaxLightLevel);
 
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);

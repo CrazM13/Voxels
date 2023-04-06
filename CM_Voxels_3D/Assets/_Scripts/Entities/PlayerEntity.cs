@@ -30,7 +30,7 @@ public class PlayerEntity : VoxelEntity {
 	private bool isAttacking;
 	private bool isInteracting;
 
-	private bool isInputAllowed = true;
+	private bool isInputAllowed;
 	public bool AllowInputs {
 		get => isInputAllowed;
 		set {
@@ -44,6 +44,10 @@ public class PlayerEntity : VoxelEntity {
 
 				isAttacking = false;
 				isInteracting = false;
+
+				Cursor.lockState = CursorLockMode.None;
+			} else if (!isInputAllowed && value) {
+				Cursor.lockState = CursorLockMode.Locked;
 			}
 
 			isInputAllowed = value;
@@ -51,7 +55,11 @@ public class PlayerEntity : VoxelEntity {
 	}
 
 	private void GetInputs() {
-		if (!isInputAllowed) return;
+
+		if (!isInputAllowed) {
+			if (!MenuManager.AreMenusActive) AllowInputs = true;
+			else return;
+		}
 
 		movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
@@ -85,7 +93,7 @@ public class PlayerEntity : VoxelEntity {
 	private void UpdateChunkLoading() {
 		Vector2Int newChunk = world.ConvertPositionToChunk(transform.position);
 		if (newChunk != currentChunk) {
-			world.UnloadChunks(currentChunk);
+			//world.UnloadChunks(currentChunk);
 			world.LoadChunks(newChunk);
 			currentChunk = newChunk;
 		}
@@ -101,7 +109,7 @@ public class PlayerEntity : VoxelEntity {
 	protected override void InitVoxelEntity() {
 		camera = Camera.main.transform;
 
-		Cursor.lockState = CursorLockMode.Locked;
+		AllowInputs = true;
 		transform.position = world.GetWorldSpawn();
 
 		InitChunkLoading();

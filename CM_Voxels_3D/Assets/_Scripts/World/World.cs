@@ -9,6 +9,8 @@ public class World : MonoBehaviour {
 	public TextAsset worldGeneratorSettings;
 	public Material voxelMaterial;
 
+	public ChunkRenderingPool chunkRendererPool;
+
 	private Vector3 worldSpawnPosition;
 
 	private Chunk[,] chunks;
@@ -18,13 +20,13 @@ public class World : MonoBehaviour {
 
 	private List<Vector2Int> chunksToCreate = new List<Vector2Int>();
 
-	private List<Vector2Int> chunksToRerender = new List<Vector2Int>();
-
 	private Thread generationThread;
-	private bool isRerenderingChunks;
 
 	private void Awake() {
 		DataManager.LoadData();
+
+		chunkRendererPool.CreateChunks();
+
 		worldGenerator = new OverworldGenerator(this, JsonUtility.FromJson<WorldGeneratorSettings>(worldGeneratorSettings.text));
 
 		chunks = new Chunk[worldGenerator.WorldSizeInChunks, worldGenerator.WorldSizeInChunks];
@@ -32,12 +34,6 @@ public class World : MonoBehaviour {
 
 		generationThread = new Thread(new ThreadStart(UpdateGeneration));
 		generationThread.Start();
-	}
-
-	private void Update() {
-		if (chunksToRerender.Count > 0 && !isRerenderingChunks) {
-			StartCoroutine(UpdateRendering());
-		}
 	}
 
 	private void UpdateGeneration() {
@@ -51,31 +47,6 @@ public class World : MonoBehaviour {
 				chunksToCreate.RemoveAt(0);
 			}
 		}
-	}
-
-	private IEnumerator UpdateRendering() {
-		isRerenderingChunks = true;
-
-		while (chunksToRerender.Count > 0) {
-			if (IsChunkInWorld(chunksToRerender[0])) {
-				Chunk chunk = chunks[chunksToRerender[0].x, chunksToRerender[0].y];
-
-				if (chunk != null) {
-					if (chunk.IsPopulated) {
-						if (!chunk.IsRendererInitialized) chunk.InitializeRenderer();
-						chunk.CalculateLight();
-						chunk.ReloadRenderer();
-					} else {
-						chunksToRerender.Add(chunksToRerender[0]);
-					}
-				} 
-			}
-
-			chunksToRerender.RemoveAt(0);
-			yield return null;
-		}
-
-		isRerenderingChunks = false;
 	}
 
 	private void OnDisable() {
@@ -98,6 +69,7 @@ public class World : MonoBehaviour {
 						}
 
 						activeChunks.Remove(targetChunkPosition);
+						chunkRendererPool.UnassignChunkForRendering(chunks[x, z]);
 					}
 				}
 			}
@@ -116,11 +88,15 @@ public class World : MonoBehaviour {
 						if (chunks[x, z] == null) {
 							CreateChunk(x, z);
 							ScheduleGenerateChunk(targetChunkPosition);
+							chunks[x, z].IsActive = true;
+							chunkRendererPool.AssignChunkForRendering(chunks[x, z]);
 						} else {
-							if (!chunks[x, z].IsActive) chunks[x, z].IsActive = true;
+							if (!chunks[x, z].IsActive) {
+								chunks[x, z].IsActive = true;
+								chunkRendererPool.AssignChunkForRendering(chunks[x, z]);
+							}
 							
 							if (!chunks[x, z].IsPopulated) ScheduleGenerateChunk(targetChunkPosition);
-							else ScheduleRerenderChunk(targetChunkPosition);
 						}
 		
 						activeChunks.Add(targetChunkPosition);
@@ -128,10 +104,6 @@ public class World : MonoBehaviour {
 				}
 			}
 		}
-	}
-
-	public void ScheduleRerenderChunk(Vector2Int chunk) {
-		if (!chunksToRerender.Contains(chunk)) chunksToRerender.Add(chunk);
 	}
 
 	public void ScheduleGenerateChunk(Vector2Int chunk) {
@@ -154,7 +126,6 @@ public class World : MonoBehaviour {
 	
 		Vector2Int chunkPosition = new Vector2Int(x, z);
 		chunks[x, z] = new Chunk(this, chunkPosition);
-		chunks[x, z].Initialize();
 	}
 
 	public bool IsChunkInWorld(Vector2Int chunkPosition) {
@@ -194,16 +165,13 @@ public class World : MonoBehaviour {
 		}
 
 		bool result = chunks[chunk.x, chunk.y].SetVoxelAt(new Vector3Int(voxelX, y, voxelZ), voxel, forceRerenderChunk);
-		if (result && !forceRerenderChunk) {
-			ScheduleRerenderChunk(chunk);
-		}
 		
 		// Rerender adjacent chunks if needed
 		if (result) {
-			if (voxelX == 0) ScheduleRerenderChunk(chunk + Vector2Int.left);
-			if (voxelX == worldGenerator.ChunkWidth - 1) ScheduleRerenderChunk(chunk + Vector2Int.right);
-			if (voxelZ == worldGenerator.ChunkWidth - 1) ScheduleRerenderChunk(chunk + Vector2Int.up);
-			if (voxelZ == 0) ScheduleRerenderChunk(chunk + Vector2Int.down);
+			if (voxelX == 0) SetChunkDirty(chunk + Vector2Int.left);
+			if (voxelX == worldGenerator.ChunkWidth - 1) SetChunkDirty(chunk + Vector2Int.right);
+			if (voxelZ == worldGenerator.ChunkWidth - 1) SetChunkDirty(chunk + Vector2Int.up);
+			if (voxelZ == 0) SetChunkDirty(chunk + Vector2Int.down);
 		}
 		
 		return result;
@@ -235,5 +203,9 @@ public class World : MonoBehaviour {
 	}
 
 	public Vector3 GetWorldSpawn() => worldSpawnPosition;
+
+	public void SetChunkDirty(Vector2Int targetChunkPosition) {
+		if (IsChunkInWorld(targetChunkPosition) && chunks[targetChunkPosition.x, targetChunkPosition.y] != null) chunks[targetChunkPosition.x, targetChunkPosition.y].IsDirty = true;
+	}
 
 }

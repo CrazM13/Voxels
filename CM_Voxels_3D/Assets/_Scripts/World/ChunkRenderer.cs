@@ -5,10 +5,9 @@ using CMVoxels;
 using CMVoxels.Rendering;
 using CMVoxels.VoxelModels;
 
-public class ChunkRenderer {
+public class ChunkRenderer : MonoBehaviour {
 
-	private VoxelModelRenderer renderer;
-
+	private new VoxelModelRenderer renderer;
 
 	private static readonly Vector3Int[] voxelNormals = new Vector3Int[6] {
 		new Vector3Int(0, 0, -1),
@@ -19,11 +18,13 @@ public class ChunkRenderer {
 		new Vector3Int(1, 0, 0)
 	};
 
-	public Chunk ChunkData { get; set; }
-
-	public ChunkRenderer(Chunk chunkData, GameObject chunkObject) {
-		this.ChunkData = chunkData;
-		this.renderer = new VoxelModelRenderer(chunkObject, chunkData.World.voxelMaterial);
+	private Chunk chunkData;
+	public Chunk ChunkData {
+		get => chunkData;
+		set {
+			chunkData = value;
+			if (renderer == null) this.renderer = new VoxelModelRenderer(gameObject, ChunkData.World.voxelMaterial);
+		}
 	}
 
 	private void CreateMeshData() {
@@ -42,6 +43,16 @@ public class ChunkRenderer {
 		renderer.ClearMesh();
 		CreateMeshData();
 		renderer.CreateMesh();
+	}
+
+	private void Update() {
+		if (ChunkData == null) return;
+
+		if (ChunkData.IsDirty) {
+			//ChunkData.CalculateLight();
+			ReRenderChunk();
+			ChunkData.IsDirty = false;
+		}
 	}
 
 	private void AddVoxelData(Vector3Int position) {

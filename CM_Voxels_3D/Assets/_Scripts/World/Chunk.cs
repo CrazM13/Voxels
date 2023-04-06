@@ -9,22 +9,15 @@ public class Chunk {
 
 	private VoxelState[,,] voxelMap;
 
-	private ChunkRenderer renderer;
 	public World World { get; private set; }
 	public bool IsInitialized { get; private set; }
-	public bool IsRendererInitialized { get; private set; }
 	public bool IsPopulated { get; set; }
+
+	public bool IsDirty { get; set; }
 
 	public Vector2Int ChunkPosition { get; private set; }
 
-	private bool isActive;
-	public bool IsActive {
-		get => isActive;
-		set {
-			isActive = value;
-			if (chunkObject) chunkObject.SetActive(value);
-		}
-	}
+	public bool IsActive { get; set; }
 
 	public Vector3 Position => chunkObject.transform.position;
 
@@ -38,26 +31,14 @@ public class Chunk {
 		WorldGenerator worldGenerator = world.GetWorldGenerator();
 
 		voxelMap = new VoxelState[worldGenerator.ChunkWidth, worldGenerator.ChunkHeight, worldGenerator.ChunkWidth];
+
+		Initialize();
 	}
 
 	public void Initialize() {
 		if (IsInitialized) return;
 		IsInitialized = true;
 		PopulateVoxelMap();
-	}
-
-	public void InitializeRenderer() {
-		WorldGenerator worldGenerator = World.GetWorldGenerator();
-
-		// Create the chunk object for rendering
-		chunkObject = new GameObject($"Chunk ({this.ChunkPosition.x}, {this.ChunkPosition.y})");
-		chunkObject.transform.SetParent(this.World.transform);
-		chunkObject.transform.position = new Vector3(this.ChunkPosition.x * worldGenerator.ChunkWidth, 0, this.ChunkPosition.y * worldGenerator.ChunkWidth);
-		chunkObject.SetActive(isActive);
-
-		renderer = new ChunkRenderer(this, chunkObject);
-
-		IsRendererInitialized = true;
 	}
 
 	private void PopulateVoxelMap() {
@@ -99,14 +80,11 @@ public class Chunk {
 		if (voxelMap[position.x, position.y, position.z].VoxelType == voxel) return false;
 	
 		voxelMap[position.x, position.y, position.z].VoxelType = voxel;
-	
-		if (forceRerender) ReloadRenderer();
-	
-		return true;
-	}
 
-	public void ReloadRenderer() {
-		if (renderer != null) renderer.ReRenderChunk();
+		//if (forceRerender) ReloadRenderer();
+		IsDirty = true;
+
+		return true;
 	}
 
 	public void CalculateLight() {
