@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voxelMaterial: {fileID: 0}
   modelFile: {fileID: 0}
-  hitboxSize: {x: 0.25, y: 2}
+  hitboxSize: {x: 0.4, y: 1.8}
   walkSpeed: 3
   sprintSpeed: 6
   jumpForce: 5
@@ -849,6 +849,109 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
+--- !u!1 &1164557524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1164557526}
+  - component: {fileID: 1164557525}
+  m_Layer: 0
+  m_Name: Skybox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1164557525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164557524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a771b3550e5ce49a7efe98fa70847c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyColourOverTime:
+    serializedVersion: 2
+    key0: {r: 0.14509805, g: 0.17254902, b: 0.5294118, a: 0}
+    key1: {r: 0.8301887, g: 0.60358375, b: 0.41901034, a: 1}
+    key2: {r: 0.4156863, g: 0.6627451, b: 0.7176471, a: 1}
+    key3: {r: 0.4156863, g: 0.6627451, b: 0.7176471, a: 0}
+    key4: {r: 0.8313726, g: 0.6039216, b: 0.41960788, a: 0}
+    key5: {r: 0.14509805, g: 0.17254902, b: 0.5294118, a: 0}
+    key6: {r: 0.14509805, g: 0.17254902, b: 0.5294118, a: 0}
+    key7: {r: 0.14509805, g: 0.17254902, b: 0.5294118, a: 0}
+    ctime0: 16384
+    ctime1: 20480
+    ctime2: 24576
+    ctime3: 46418
+    ctime4: 50518
+    ctime5: 54610
+    ctime6: 54610
+    ctime7: 54610
+    atime0: 16384
+    atime1: 20512
+    atime2: 50527
+    atime3: 54591
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 4
+  skyEmmisionOverTime:
+    serializedVersion: 2
+    key0: {r: 0.007843138, g: 0.007843138, b: 0.62352943, a: 0.5019608}
+    key1: {r: 1, g: 0.4156863, b: 0, a: 1}
+    key2: {r: 1, g: 1, b: 1, a: 0}
+    key3: {r: 1, g: 1, b: 1, a: 0}
+    key4: {r: 1, g: 0.4156863, b: 0, a: 1}
+    key5: {r: 0.007843138, g: 0.007843138, b: 0.62352943, a: 0.5019608}
+    key6: {r: 0.007843138, g: 0.007843138, b: 0.62352943, a: 1}
+    key7: {r: 0.007843138, g: 0.007843138, b: 0.62352943, a: 0}
+    ctime0: 16384
+    ctime1: 20480
+    ctime2: 24576
+    ctime3: 46418
+    ctime4: 50518
+    ctime5: 54610
+    ctime6: 65535
+    ctime7: 65535
+    atime0: 16384
+    atime1: 20512
+    atime2: 24576
+    atime3: 46399
+    atime4: 50501
+    atime5: 54591
+    atime6: 65535
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 6
+  dayLength: 48
+--- !u!4 &1164557526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164557524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 404.99316, y: 8.002673, z: 399.61734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1200677474
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +1077,7 @@ GameObject:
   - component: {fileID: 1392222215}
   - component: {fileID: 1392222214}
   - component: {fileID: 1392222217}
+  - component: {fileID: 1392222218}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -998,7 +1102,7 @@ Camera:
   m_GameObject: {fileID: 1392222213}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1071,7 +1175,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -1080,6 +1184,15 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!45 &1392222218
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392222213}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 4ca45b7a3fa35144abf649e6167b516b, type: 2}
 --- !u!1 &1435110605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,7 +1413,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1801612712}
   - component: {fileID: 1801612711}
-  - component: {fileID: 1801612713}
   - component: {fileID: 1801612714}
   m_Layer: 0
   m_Name: World
@@ -1340,22 +1452,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1801612713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801612710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a771b3550e5ce49a7efe98fa70847c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  daySkyColour: {r: 0.416712, g: 0.66439855, b: 0.71599996, a: 1}
-  nightSkyColour: {r: 0.14702742, g: 0.1741274, b: 0.5283019, a: 1}
-  horizonSkyColour: {r: 0.965, g: 0.4770401, b: 0.08202498, a: 1}
-  dayLength: 48
 --- !u!114 &1801612714
 MonoBehaviour:
   m_ObjectHideFlags: 0

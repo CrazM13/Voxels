@@ -73,9 +73,11 @@ Shader "Voxel/StandardVoxelShader"
 
 				col = lerp(float4(0, 0, 0, 1), col, shade);
 
-				float illuminationR = i.colour.r + (SkyLightColour.r * shade) / (1 + shade);
-				float illuminationG = i.colour.g + (SkyLightColour.g * shade) / (1 + shade);
-				float illuminationB = i.colour.b + (SkyLightColour.b * shade) / (1 + shade);
+				float skyColourWeight = shade * SkyLightColour.a;
+
+				float illuminationR = i.colour.r + (SkyLightColour.r * skyColourWeight) / (1 + skyColourWeight);
+				float illuminationG = i.colour.g + (SkyLightColour.g * skyColourWeight) / (1 + skyColourWeight);
+				float illuminationB = i.colour.b + (SkyLightColour.b * skyColourWeight) / (1 + skyColourWeight);
 
 				col.r = min(col.r + (0.5 * MinLightLevel * illuminationR), MaxLightLevel);
 				col.g = min(col.g + (0.5 * MinLightLevel * illuminationG), MaxLightLevel);
