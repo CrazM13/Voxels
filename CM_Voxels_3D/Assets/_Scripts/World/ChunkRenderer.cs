@@ -39,6 +39,11 @@ public class ChunkRenderer : MonoBehaviour {
 		}
 	}
 
+	public void ClearChunkModel() {
+		renderer.ClearMesh();
+		renderer.CreateMesh();
+	}
+
 	public void ReRenderChunk() {
 		renderer.ClearMesh();
 		CreateMeshData();

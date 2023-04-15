@@ -22,6 +22,9 @@ public class World : MonoBehaviour {
 
 	private Thread generationThread;
 
+	private List<Vector2Int> chunksToUnload = new List<Vector2Int>();
+	private List<Vector2Int> chunksToLoad = new List<Vector2Int>();
+
 	private void Awake() {
 		DataManager.LoadData();
 
@@ -34,6 +37,18 @@ public class World : MonoBehaviour {
 
 		generationThread = new Thread(new ThreadStart(UpdateGeneration));
 		generationThread.Start();
+	}
+
+	private void Update() {
+		if (chunksToLoad.Count > 0 || chunksToUnload.Count > 0) {
+			UpdateChunkLoading();
+		}
+
+		foreach (Vector2Int chunk in activeChunks) {
+			if (chunks[chunk.x, chunk.y] != null) {
+				chunks[chunk.x, chunk.y].RandomlyTick();
+			}
+		}
 	}
 
 	private void UpdateGeneration() {
@@ -64,12 +79,8 @@ public class World : MonoBehaviour {
 					float distance = Vector2Int.Distance(currentChunk, targetChunkPosition);
 
 					if (distance <= worldGenerator.ViewDistanceInChunks) {
-						if (chunks[x, z] != null) {
-							if (chunks[x, z].IsActive) chunks[x, z].IsActive = false;
-						}
-
-						activeChunks.Remove(targetChunkPosition);
-						chunkRendererPool.UnassignChunkForRendering(chunks[x, z]);
+						//if (chunksToLoad.Contains(targetChunkPosition)) chunksToLoad.Remove(targetChunkPosition);
+						if (!chunksToUnload.Contains(targetChunkPosition)) chunksToUnload.Add(targetChunkPosition);
 					}
 				}
 			}
@@ -85,24 +96,50 @@ public class World : MonoBehaviour {
 					float distance = Vector2Int.Distance(currentChunk, targetChunkPosition);
 		
 					if (distance <= worldGenerator.ViewDistanceInChunks) {
-						if (chunks[x, z] == null) {
-							CreateChunk(x, z);
-							ScheduleGenerateChunk(targetChunkPosition);
-							chunks[x, z].IsActive = true;
-							chunkRendererPool.AssignChunkForRendering(chunks[x, z]);
-						} else {
-							if (!chunks[x, z].IsActive) {
-								chunks[x, z].IsActive = true;
-								chunkRendererPool.AssignChunkForRendering(chunks[x, z]);
-							}
-							
-							if (!chunks[x, z].IsPopulated) ScheduleGenerateChunk(targetChunkPosition);
-						}
-		
-						activeChunks.Add(targetChunkPosition);
+						if (chunksToUnload.Contains(targetChunkPosition)) chunksToUnload.Remove(targetChunkPosition);
+						if (!chunksToLoad.Contains(targetChunkPosition)) chunksToLoad.Add(targetChunkPosition);
 					}
 				}
 			}
+		}
+	}
+
+	private void LoadSingleChunk(Vector2Int chunk) {
+		if (chunks[chunk.x, chunk.y] == null) {
+			CreateChunk(chunk.x, chunk.y);
+			ScheduleGenerateChunk(chunk);
+			chunks[chunk.x, chunk.y].IsActive = true;
+			chunkRendererPool.AssignChunkForRendering(chunks[chunk.x, chunk.y]);
+		} else {
+			if (!chunks[chunk.x, chunk.y].IsActive) {
+				chunks[chunk.x, chunk.y].IsActive = true;
+				chunkRendererPool.AssignChunkForRendering(chunks[chunk.x, chunk.y]);
+			}
+
+			if (!chunks[chunk.x, chunk.y].IsPopulated) ScheduleGenerateChunk(chunk);
+		}
+
+		activeChunks.Add(chunk);
+	}
+
+	private void UnloadSingleChunk(Vector2Int chunk) {
+		if (chunks[chunk.x, chunk.y] != null) {
+			if (chunks[chunk.x, chunk.y].IsActive) chunks[chunk.x, chunk.y].IsActive = false;
+		}
+
+		activeChunks.Remove(chunk);
+		chunkRendererPool.UnassignChunkForRendering(chunks[chunk.x, chunk.y]);
+	}
+
+	public void UpdateChunkLoading() {
+		while (chunksToUnload.Count > 0) {
+			UnloadSingleChunk(chunksToUnload[0]);
+			chunksToUnload.RemoveAt(0);
+		}
+
+		while (chunksToLoad.Count > 0) {
+			LoadSingleChunk(chunksToLoad[0]);
+			chunksToLoad.RemoveAt(0);
 		}
 	}
 

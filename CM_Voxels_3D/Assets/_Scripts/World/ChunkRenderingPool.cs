@@ -22,9 +22,9 @@ public class ChunkRenderingPool : MonoBehaviour {
 	}
 
 	public void AssignChunkForRendering(Chunk chunk) {
-		if (unassignedChunks.Count <= 0) return;
-
 		Vector2Int chunkPosition = chunk.ChunkPosition;
+		if (unassignedChunks.Count <= 0 || assignedChunks.ContainsKey(chunkPosition)) return;
+		
 		ChunkRenderer chunkRenderer = unassignedChunks.Dequeue();
 
 		chunkRenderer.ChunkData = chunk;
@@ -47,6 +47,8 @@ public class ChunkRenderingPool : MonoBehaviour {
 		chunkRenderer.transform.position = Vector3.zero;
 
 		chunkRenderer.gameObject.SetActive(false);
+
+		chunkRenderer.ClearChunkModel();
 
 		unassignedChunks.Enqueue(chunkRenderer);
 	}

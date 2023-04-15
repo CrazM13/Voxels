@@ -93,7 +93,7 @@ public class PlayerEntity : VoxelEntity {
 	private void UpdateChunkLoading() {
 		Vector2Int newChunk = world.ConvertPositionToChunk(transform.position);
 		if (newChunk != currentChunk) {
-			//world.UnloadChunks(currentChunk);
+			world.UnloadChunks(currentChunk);
 			world.LoadChunks(newChunk);
 			currentChunk = newChunk;
 		}
