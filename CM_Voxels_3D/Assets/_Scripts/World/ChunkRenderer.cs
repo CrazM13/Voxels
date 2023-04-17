@@ -54,7 +54,7 @@ public class ChunkRenderer : MonoBehaviour {
 		if (ChunkData == null) return;
 
 		if (ChunkData.IsDirty) {
-			//ChunkData.CalculateLight();
+			ChunkData.CalculateLight();
 			ReRenderChunk();
 			ChunkData.IsDirty = false;
 		}
@@ -62,6 +62,7 @@ public class ChunkRenderer : MonoBehaviour {
 
 	private void AddVoxelData(Vector3Int position) {
 		Voxel voxel = ChunkData.GetVoxelAt(position).GetVoxelType();
+		voxel.OnPreRender(chunkData.World, position);
 		RenderToChunk(voxel.Model, position);
 	}
 

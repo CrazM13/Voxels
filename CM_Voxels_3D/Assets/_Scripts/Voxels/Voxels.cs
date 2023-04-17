@@ -19,7 +19,7 @@ namespace CMVoxels {
 
 		public static readonly Voxel LEAF = new VoxelBuilder("leaf", "Leaf").SetSolid(true).SetSeeThrough(true).SetTransparency(1, 1, 1).Build();
 		public static readonly Voxel APPLE = new VoxelBuilder("apple", "Apple").SetSolid(true).SetSeeThrough(true).SetTransparency(1, 1, 1).Build();
-		public static readonly Voxel APPLE_LEAF = new VoxelBuilder(new VoxelProducer("apple_leaf", "Leaf", APPLE, Vector3Int.down, 0.05f)).SetSeeThrough(true).SetTransparency(1, 1, 1).SetSolid(true).Build();
+		public static readonly Voxel APPLE_LEAF = new VoxelBuilder(new VoxelProducer("apple_leaf", "Leaf", APPLE, Vector3Int.down, 0.001f)).SetSeeThrough(true).SetTransparency(1, 1, 1).SetSolid(true).Build();
 
 		public static readonly Voxel LAMP = new VoxelBuilder("lamp", "Lamp").SetTransparency(1, 1, 1).SetSeeThrough(true).SetEmmision(1f, 0.75f, 0).Build();
 

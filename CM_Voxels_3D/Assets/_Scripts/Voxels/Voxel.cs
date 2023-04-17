@@ -29,6 +29,7 @@ namespace CMVoxels {
 		#region Events
 		public virtual void OnRandomTick(World world, Vector3Int position) { /*MT*/ }
 		public virtual void OnInteract(World world, Vector3Int position, VoxelEntity source) { /*MT*/ }
+		public virtual void OnPreRender(World world, Vector3Int position) { /*MT*/ }
 		#endregion
 
 		#region Getters

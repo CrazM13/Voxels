@@ -27,16 +27,19 @@ namespace CMUI {
 			}
 		}
 
-		public static void OpenMenu(string menuName) {
+		public static Menu OpenMenu(string menuName) {
 			Menu menu = menusCache[menuName];
 			menu.OpenPage(menu.GetRootPage());
 
 			menusOrder.Push(menuName);
+
+			return menu;
 		}
 
-		public static void CloseMenu() {
+		public static Menu CloseMenu() {
 			Menu menu = menusCache[menusOrder.Pop()];
 			if (menu.IsMenuActive) menu.CloseMenu();
+			return menu;
 		}
 
 	}

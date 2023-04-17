@@ -26,12 +26,14 @@ namespace CMVoxels.VoxelModels.Serialization {
 
 		[System.Serializable]
 		public class VoxelModelBone {
+			public VoxelModelVector3 origin;
 			public VoxelModelSize3 size;
 			public VoxelModelVector3 offset;
 			public VoxelModelVector3 rotation;
 			public int parent;
 
 			public VoxelModelBone() {
+				origin = new VoxelModelVector3();
 				size = new VoxelModelSize3();
 				offset = new VoxelModelVector3();
 				rotation = new VoxelModelVector3();

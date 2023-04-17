@@ -24,6 +24,8 @@ namespace CMUI {
 				} else {
 					pagesCache.Add(pageObject.name, pageObject);
 				}
+
+				pageObject.SetMenu(this);
 			}
 
 			MenuManager.RegisterMenu(this);
@@ -72,6 +74,10 @@ namespace CMUI {
 		}
 
 		public string GetRootPage() => rootPage;
+
+		public Page GetActivePage() {
+			return pagesCache[pagesOrder.Peek()];
+		}
 
 	}
 }

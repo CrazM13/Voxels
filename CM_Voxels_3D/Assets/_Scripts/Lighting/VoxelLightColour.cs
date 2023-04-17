@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,20 @@ public class VoxelLightColour {
 		B = Mathf.Clamp01(B + b);
 	}
 
+	public void CombineLight(VoxelLightColour light) {
+		R = Mathf.Max(R, light.R);
+		G = Mathf.Max(G, light.G);
+		B = Mathf.Max(B, light.B);
+		SkyInfluence = Mathf.Max(SkyInfluence, light.SkyInfluence);
+	}
+
+	public void ApplyTransparency(float transparency) {
+		R *= transparency;
+		G *= transparency;
+		B *= transparency;
+		SkyInfluence *= transparency;
+	}
+
 	public VoxelLightColour Copy() {
 		return new VoxelLightColour(R, G, B, SkyInfluence);
 	}
@@ -41,5 +56,16 @@ public class VoxelLightColour {
 	}
 
 	public bool IsActive => R != 0 || B != 0 || G != 0 || SkyInfluence != 0;
+
+	internal void Clear() {
+		this.R = 0;
+		this.G = 0;
+		this.B = 0;
+		this.SkyInfluence = 0;
+	}
+
+	public bool CanDiffuse() {
+		return R > VoxelLightingData.LightFalloff || G > VoxelLightingData.LightFalloff || B > VoxelLightingData.LightFalloff || SkyInfluence > VoxelLightingData.LightFalloff;
+	}
 
 }

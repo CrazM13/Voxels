@@ -32,6 +32,8 @@ public class ChunkRenderingPool : MonoBehaviour {
 
 		chunkRenderer.gameObject.SetActive(true);
 
+		chunkRenderer.ReRenderChunk();
+
 		assignedChunks.Add(chunkPosition, chunkRenderer);
 	}
 

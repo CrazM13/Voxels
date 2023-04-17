@@ -26,6 +26,7 @@ namespace CMVoxels.VoxelModels.Animation {
 					VoxelModelData.VoxelModelBone bone = voxelModelData.bones[i];
 					bones[i] = new VoxelBoneTransform();
 
+					bones[i].Origin = new Vector3(bone.origin.x, bone.origin.y, bone.origin.z);
 					bones[i].Position = new Vector3(bone.offset.x, bone.offset.y, bone.offset.z);
 					bones[i].Rotation = new Vector3(bone.rotation.x, bone.rotation.y, bone.rotation.z);
 					bones[i].Scale = new Vector3(bone.size.x, bone.size.y, bone.size.z);

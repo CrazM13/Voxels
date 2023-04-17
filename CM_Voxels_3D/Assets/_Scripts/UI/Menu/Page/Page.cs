@@ -5,7 +5,7 @@ namespace CMUI.Pages {
 	public class Page : MonoBehaviour {
 
 		[SerializeField] private CanvasGroup pageObject;
-
+		protected Menu menu;
 
 		private bool isActivePage = false;
 		public bool IsActivePage {
@@ -26,6 +26,10 @@ namespace CMUI.Pages {
 
 		public void HidePage() {
 			pageObject.gameObject.SetActive(false);
+		}
+
+		public void SetMenu(Menu menu) {
+			this.menu = menu;
 		}
 
 	}

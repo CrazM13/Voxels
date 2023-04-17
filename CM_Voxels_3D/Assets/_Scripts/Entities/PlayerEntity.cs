@@ -73,7 +73,11 @@ public class PlayerEntity : VoxelEntity {
 
 		// Menu Hotkeys
 		if (Input.GetKeyDown(KeyCode.M)) {
-			MenuManager.OpenMenu("Menu");
+			Menu newMenu = MenuManager.OpenMenu("Menu");
+			if (newMenu is InventoryMenu inventoryMenu) {
+				inventoryMenu.TargetInventory = GetInventory();
+				inventoryMenu.RefreshUI();
+			}
 			AllowInputs = false;
 		}
 	}
@@ -106,6 +110,12 @@ public class PlayerEntity : VoxelEntity {
 	}
 	#endregion
 
+	#region Inventory
+	private Inventory inventory = new Inventory();
+
+	public Inventory GetInventory() => inventory;
+	#endregion
+
 	protected override void InitVoxelEntity() {
 		camera = Camera.main.transform;
 
@@ -124,7 +134,10 @@ public class PlayerEntity : VoxelEntity {
 			Vector3Int selectPos = Vector3Int.FloorToInt(selection.position);
 
 			if (isAttacking) {
+				Voxel pickedUpVoxel = world.GetVoxelAt(selectPos).GetVoxelType();
 				world.SetVoxel(selectPos, Voxels.AIR);
+
+				inventory.AddItemStack(new ItemStack(pickedUpVoxel));
 			}
 
 			if (isInteracting) {

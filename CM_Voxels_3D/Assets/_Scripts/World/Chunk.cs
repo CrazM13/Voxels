@@ -1,11 +1,8 @@
-using System.Collections;
+using CMVoxels;
 using System.Collections.Generic;
 using UnityEngine;
-using CMVoxels;
 
 public class Chunk {
-
-	private GameObject chunkObject;
 
 	private VoxelState[,,] voxelMap;
 
@@ -18,8 +15,6 @@ public class Chunk {
 	public Vector2Int ChunkPosition { get; private set; }
 
 	public bool IsActive { get; set; }
-
-	public Vector3 Position => chunkObject.transform.position;
 
 	public int ChunkWidth => voxelMap.GetLength(0);
 	public int ChunkHeight => voxelMap.GetLength(1);
@@ -88,6 +83,7 @@ public class Chunk {
 	}
 
 	public void CalculateLight() {
+
 		// Emmision Pass
 		for (int x = 0; x < ChunkWidth; x++) {
 			for (int z = 0; z < ChunkWidth; z++) {
@@ -95,12 +91,14 @@ public class Chunk {
 
 				for (int y = ChunkHeight - 1; y >= 0; y--) {
 					VoxelState currentVoxel = voxelMap[x, y, z];
+					currentVoxel.voxelLighting.Clear();
+
 					skyLight *= currentVoxel.GetVoxelType().GetTransparency();
 					
 					// Apply light from light source
 					if (currentVoxel.GetVoxelType().IsLightSource()) {
 						VoxelLightColour emmision = currentVoxel.GetVoxelType().GetEmmision();
-						currentVoxel.voxelLighting.Increase(emmision.R, emmision.G, emmision.B);
+						currentVoxel.voxelLighting.CombineLight(emmision);
 					}
 
 					currentVoxel.voxelLighting.SkyInfluence = skyLight;
@@ -139,7 +137,8 @@ public class Chunk {
 							sky = Mathf.Max(right.SkyInfluence, left.SkyInfluence, forward.SkyInfluence, back.SkyInfluence, up.SkyInfluence, down.SkyInfluence, currentVoxel.voxelLighting.SkyInfluence);
 		
 							VoxelLightColour newLighting = new VoxelLightColour(r, g, b, sky);
-		
+							newLighting.ApplyTransparency(transparency);
+
 							currentVoxel.voxelLighting = newLighting;
 						}
 					}
